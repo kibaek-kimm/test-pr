@@ -1,10 +1,11 @@
 name: get-commit-hash
 on: push
-env:
-  LATEST_COMMIT_HASH: $(git rev-parse --short "$GITHUB_SHA")
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "${LATEST_COMMIT_HASH}"
+      - name: set env
+        run: echo "BUILD_ID=git rev-parse --short $GITHUB_SHA" >> GITHUB_ENV
+
+      - name: print
+        run: echo "${BUILD_ID}"
