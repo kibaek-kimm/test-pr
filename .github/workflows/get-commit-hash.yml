@@ -4,14 +4,14 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      # - name: set BUILD_ID env
-      #   run: echo "BUILD_ID=git rev-parse --short $GITHUB_SHA" >> GITHUB_ENV
+      - name: set BUILD_ID env
+        run: echo "BUILD_ID=`git rev-parse --short $GITHUB_SHA`" >> GITHUB_ENV
 
-      # - name: print BUILD_ID
-      #   run: echo "${BUILD_ID}"
+      - name: print BUILD_ID
+        run: echo "${BUILD_ID}"
 
-    - name: Add SHORT_SHA env property with commit short sha
-      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+    # - name: Add SHORT_SHA env property with commit short sha
+    #   run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
 
-    - name: My step
-      run: echo "${SHORT_SHA}"
+    # - name: My step
+    #   run: echo "${SHORT_SHA}"
